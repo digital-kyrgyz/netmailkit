@@ -14,7 +14,7 @@ namespace ConsoleMailKit
         public static async Task SendEmail(string email, string subject, string message)
         {
             var emailMessage = new MimeMessage();
-            emailMessage.From.Add(new MailboxAddress("АДМИНИСТРАЦИЯ SALYK.KG", "noreply@it.salyk.kg"));
+            emailMessage.From.Add(new MailboxAddress("АДМИНИСТРАЦИЯ SALYK.KG", ""));
             emailMessage.To.Add(new MailboxAddress("", email));
             emailMessage.Subject = subject;
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
@@ -25,7 +25,7 @@ namespace ConsoleMailKit
             {
                 await client.ConnectAsync("smtp.yandex.ru", 465, true);
                 //await client.ConnectAsync("smtp.gmail.com", 465, true);
-                await client.AuthenticateAsync("noreply@it.salyk.kg", "jG1xB0bZ9sP7uH9f");
+                await client.AuthenticateAsync("", "");
                 await client.SendAsync(emailMessage);
                 await client.DisconnectAsync(true);
             }
